@@ -1,4 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<div class="col-md-7 col-sm-12 text-left">
+        <ul>
+          <li class="row list-inline columnCaptions">
+            <span>QTY</span>
+            <span>ITEM</span>
+            <span>Price</span>
+          </li>
+        <% @cart.line_items.each do |item| %>
+          <li class="row">
+            <span class="quantity">1</span>
+            <span class="itemName"><%= item.product.title %></span>
+            <span class="popbtn"><a class="arrow"></a></span>
+            <span class="price"><%= number_to_currency(item.product.price) %></span>
+          </li>
+        <% end %>
+        <li class="row totals">
+            <span class="itemName">Total:</span>
+            <span class="price"></span>
+            <span class="order"> <a class="text-center">ORDER</a></span>
+        </li>
+      </ul>
+</div>
+
+
+
+<!-- The popover content -->
+
+    <div id="popover" style="display: none">
+      <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+    </div>
