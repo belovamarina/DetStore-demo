@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require carts
+//= require categories
 //= require_tree .

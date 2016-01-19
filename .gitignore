@@ -1,3 +1,8 @@
+/app/assets/stylesheets/carts2.scss
+/app/views/carts/show2.html.erb
+/app/views/categories/show2.html.erb
+/app/views/products/_index.html.erb
+/app/views/products/index2.html.erb
 /public/assets/categories/1/medium/273943931.jpg
 /public/assets/categories/1/original/273943931.jpg
 /public/assets/categories/1/small/273943931.jpg
