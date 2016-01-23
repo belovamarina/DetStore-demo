@@ -23,7 +23,7 @@ two:
 puzzle:
   id: 3
   category_id: 1
-  title: MyString
+  title: Puzzle
   description: MyText
   price: 9.99
   picture_file_name: /test/fixtures/sample_img.jpg

@@ -1,4 +1,5 @@
 require 'test_helper'
+include CurrentCart
 
 class LineItemsControllerTest < ActionController::TestCase
   setup do
@@ -24,6 +25,13 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_redirected_to cart_path(assigns(:line_item).cart)
   end
 
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, product_id: products(:puzzle).id
+    end
+    assert_response :success
+  end
+
   test "should show line_item" do
     get :show, id: @line_item
     assert_response :success
@@ -35,8 +43,9 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should update line_item" do
-    patch :update, id: @line_item, line_item: { product_id: @line_item.product_id }
-    assert_redirected_to line_item_path(assigns(:line_item))
+    set_cart
+    patch :update, id: @line_item, line_item: { product_id: @line_item.product_id}
+    assert_redirected_to cart_path(@cart)
   end
 
   test "should destroy line_item" do
@@ -44,6 +53,6 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to store_path
   end
 end
