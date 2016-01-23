@@ -1,0 +1,4 @@
+$('#cart-btn').html("Cart (<%= number_to_currency(@cart.total_price) %>)");
+$('#cart-a').attr("href", "<%= cart_path(@cart.id) %>");
+
+

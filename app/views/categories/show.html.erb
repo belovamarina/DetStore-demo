@@ -8,27 +8,6 @@
         </div>
     </div>
     <div id="products" class="row list-group">
-      <% @products.each do |product| %>
-        <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail">
-                <%= image_tag product.picture.url(:medium), class: "group list-group-image" %>
-                <div class="caption">
-                    <h4 class="group inner list-group-item-heading">
-                        <%= product.title %></h4>
-                    <p class="group inner list-group-item-text">
-                        <%= product.description %></p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                <%= number_to_currency(product.price) %></p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                           <%= button_to 'Add to Cart', line_items_path(product_id: product), class: "btn btn-success" %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% end %>
-  </div>
+        <%= render(@products) %>
+    </div>
 </div>

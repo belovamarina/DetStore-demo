@@ -1,7 +1,8 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :update, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+
 
   # GET /line_items
   # GET /line_items.json
@@ -32,6 +33,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart}
+        format.js
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -44,13 +46,9 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1.json
   def update
     respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
+        @line_item.update_attributes(line_item_params)
+        format.html { redirect_to @cart, notice: 'Line item was successfully updated.'}
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -59,8 +57,11 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
-      format.json { head :no_content }
+       if @cart.line_items.empty?
+          format.html { redirect_to store_path }
+        else
+          format.html { redirect_to @cart, notice: 'Line item was successfully destroyed.'  }
+        end
     end
   end
 
@@ -72,6 +73,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id)
+      params.require(:line_item).permit(:product_id, :quantity, :price)
     end
 end
