@@ -4,6 +4,7 @@ include CurrentCart
 class LineItemsControllerTest < ActionController::TestCase
   setup do
     @line_item = line_items(:one)
+    @request.env['HTTP_REFERER'] = 'http://test.com/orders/1'
   end
 
   test "should get index" do
@@ -45,7 +46,7 @@ class LineItemsControllerTest < ActionController::TestCase
   test "should update line_item" do
     set_cart
     patch :update, id: @line_item, line_item: { product_id: @line_item.product_id}
-    assert_redirected_to cart_path(@cart)
+    assert_redirected_to :back
   end
 
   test "should destroy line_item" do
