@@ -1,29 +1,45 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <p>
+    <strong>Name:</strong>
+    <%= @order.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @order.phone %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @order.phone %>
-</p>
+  <p>
+    <strong>Address:</strong>
+    <%= @order.address %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @order.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+  <p>
+    <strong>Pay type:</strong>
+    <%= @order.pay_type %>
+  </p>
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
+  <table id="cart" class="table table-hover table-condensed">
+      <thead>
+      <tr>
+        <th style="width:45%">Product</th>
+        <th style="width:10%">Price</th>
+        <th style="width:13%">Quantity</th>
+        <th style="width:22%" class="text-center">Subtotal</th>
+        <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <%= render(@order.line_items) %>
+
+  </table>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+</div>

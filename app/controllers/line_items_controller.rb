@@ -47,7 +47,7 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
         @line_item.update_attributes(line_item_params)
-        format.html { redirect_to @cart, notice: 'Line item was successfully updated.'}
+        format.html { redirect_to :back, notice: 'Line item was successfully updated.'}
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
     end
   end
