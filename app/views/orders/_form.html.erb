@@ -44,7 +44,7 @@
       </div>
       <div class="row">
         <div class="col-md-6 pull-left">
-          <%= link_to 'Back', cart_path(@cart), class: "btn btn-warning" %>
+          <%= link_to_if(current_page?(new_order_path), 'Back', cart_path(@cart), class: "btn btn-warning") %>
         </div>
         <div class="col-sm-offset-3 col-md-3 pull-right">
           <%= f.submit "Place order", class: "btn btn-success" %>
