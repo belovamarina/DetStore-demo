@@ -14,6 +14,12 @@ class OrderNotifier < ApplicationMailer
     end
   end
 
+  def new_order(order)
+    mail(to: '<rubyonrails4@ya.ru>', subject: 'New order in DetStore (#{order.id})') do |format|
+      format.html
+    end
+  end
+
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
