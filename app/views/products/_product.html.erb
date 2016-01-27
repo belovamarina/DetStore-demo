@@ -11,16 +11,18 @@
                     <p class="lead">
                         <%= number_to_currency(product.price) %></p>
                 </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="btn-group" role="group" aria-label="...">
+                <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <div class="btn-group inline" role="group" aria-label="...">
                        <%= button_to 'Add to Cart', line_items_path(product_id: product), id: "add-to-cart-btn", class: "btn btn-success", remote: true %>
+                   </div>
+                </div>
 
-                       <% if product.line_items.any? %>
-                        <%= button_to @cart, method: :get, class: "btn btn-warning" do %>
-                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                        <% end %>  
-                       <% end %>
-                    </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="btn-group inline" role="group" aria-label="...">
+                       <%= link_to 'Show', product_path(product.id), class: "btn btn-warning" %>
+                   </div>
+                </div>
                 </div>
             </div>
         </div>

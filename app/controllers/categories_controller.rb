@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -20,6 +22,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    categories = Category.all
   end
 
   # POST /categories

@@ -1,28 +1,83 @@
-<p id="notice"><%= notice %></p>
+  <div class="container">
+    <% @product.galleries.each do |gallery| %>
+  <%= gallery.pictures.each do |picture| %>
+    <%= image_tag picture.image.url %>
+  <% end %>
+<% end %>
+    <div class="content-wrapper"> 
+    <div class="item-container">  
+      <div class="container"> 
+        <div class="col-md-6">
+          <div class="product col-md-6 service-image-left">
+            <center>
+              <%= image_tag @product.picture.url, id: "item-display" %>
+            </center>
+          </div>
+          
+          <div class="container service1-items col-sm-2 col-md-2 pull-left">
+            <center>
+              <a id="item-1" class="service1-item">
+                <%= image_tag @product.picture.url(:medium)%>
+              </a>
+              <a id="item-2" class="service1-item">
+                <%= image_tag @product.picture.url(:medium)%>
+              </a>
+              <a id="item-3" class="service1-item">
+                <%= image_tag @product.picture.url(:medium)%>
+              </a>
+            </center>
+          </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.title %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<%= button_to 'Add to Cart', line_items_path(product_id: @product) %>
-
-<p><%= image_tag @product.picture.url %></p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+        </div>
+          
+        <div class="col-md-4">
+          <div class="product-title"><%= @product.title %></div>
+          <div class="product-desc"><%= @product.description%></div>
+          <hr>
+          <div class="product-price"><%= number_to_currency(@product.price) %></div>
+          <div class="product-stock">In Stock</div>
+          <hr>
+          <div class="btn-group cart">
+            <%= button_to 'Add to Cart', line_items_path(product_id: @product), id: "add-to-cart-btn", class: "btn btn-success", remote: true %>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="container">   
+      <div class="col-md-12 product-info">
+          <ul id="myTab" class="nav nav-tabs nav_tabs">
+            
+            <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+            <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li>
+            <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
+            
+          </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="service-one">
+             
+              <section class="container product-info">
+                <ul>
+                 <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                 <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                 <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                 <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                </ul>
+              </section>
+                      
+            </div>
+          <div class="tab-pane fade" id="service-two">
+            
+            <section class="container">
+              <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>               
+            </section>
+            
+          </div>
+          <div class="tab-pane fade" id="service-three">
+             
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

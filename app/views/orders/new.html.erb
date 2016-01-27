@@ -1,7 +1,9 @@
 <div class="container">
 <h1>New Order</h1>
-
-<%= render 'form' %>
-
-
+<% if user_signed_in? %>
+  <%= render 'form_for_current_user' %>
+<% else %>
+  <%= render 'form' %>
+<% end %>
 </div>
+

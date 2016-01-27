@@ -1,12 +1,19 @@
+<%= render partial: "carousel" %>
+
 <div class="container">
-    <div class="well well-sm">
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
+    <% @categories.each do |category| %>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="<%= cycle("col-md-7", "col-md-7 col-md-push-5", name: "text") -%>">
+          <h2 class="featurette-heading"><%= category.title %> <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead"><%= category.description %><%= link_to category_path(category.id), class: "btn btn-primary btn-lg" do %>
+              See products <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <% end %></p>
+      </div>
+        <div class="<%= cycle("col-md-5", "col-md-5 col-md-pull-7", name: "img") -%>">
+          <%= image_tag category.picture.url(:medium), class: "featurette-image img-thumbnail center-block" %>
         </div>
+        <br>
     </div>
-    <div id="products" class="row list-group">
-        <%= render(@categories) %>
-    </div>
+    <% end %>
 </div>

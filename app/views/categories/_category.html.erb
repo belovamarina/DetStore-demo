@@ -1,26 +1,12 @@
-<div class="item  col-xs-4 col-lg-4">
-    <div class="thumbnail">
-        <%= image_tag category.picture.url(:medium), class: "group list-group-image" %>
-        <div class="caption">
-            <h4 class="group inner list-group-item-heading">
-                <%= category.title %></h4>
-            <p class="group inner list-group-item-text">
-                <%= category.description %></p>
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                </div>
-                <div class="col-xs-12 col-md-6">
-                   <a class="btn btn-primary" role="button" data-toggle="collapse" href="#<%= category.id %>" aria-expanded="false" aria-controls="collapseExample">
-                        See products:
-                    </a>
-                    <br>
-                    <div class="collapse" id="<%= category.id %>">
-                        <div class="well">
-                        <%= render(category.products) %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="<%= cycle('col-md-7', 'col-md-7 col-md-push-5') %>">
+      <h2 class="featurette-heading"><%= category.title %> <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead"><%= category.description %></p>
+    </div>
+    <div class="<%= cycle('col-md-5', 'col-md-5 col-md-pull-7') %>">
+      <%= image_tag category.picture.url, class: "featurette-image img-responsive center-block" %>
     </div>
 </div>
