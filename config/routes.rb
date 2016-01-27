@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :galleries
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+
   resources :orders
   resources :line_items
   resources :carts
