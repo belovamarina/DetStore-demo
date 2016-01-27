@@ -1,0 +1,27 @@
+<p>
+  <strong>Name:</strong>
+  <%= @gallery.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gallery.description %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @gallery.product.title %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @gallery.category %>
+</p>
+
+<% @gallery.pictures.each do |picture| %>
+  <%= image_tag picture.image.url(:medium) %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Back', galleries_path %>
