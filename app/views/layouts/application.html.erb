@@ -58,8 +58,8 @@
       </li>
     </ul>
 
-      <ul class="nav navbar-nav navbar-right"> 
-        <div class="row">
+ 
+      <div class="row nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <p class="navbar-text pull-right">Hello!, <%= current_user.email %></p>
           <p><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "navbar-link pull-right" %></p>
@@ -67,7 +67,7 @@
       <% else %>
           <p class="navbar-text"><%= link_to 'Sign in', new_user_session_path, class: "navbar-link" %> |
           <%= link_to 'Sign up', new_user_registration_path, class: "navbar-link" %></p>
-      <% end %></div></ul>
+      <% end %></div>
 
     <ul class="nav navbar-nav navbar-left">
         <% if @cart && @cart.line_items.empty? %>
