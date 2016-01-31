@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   validates :pay_type, inclusion: PAYMENT_TYPES
 
   has_many :line_items, dependent: :destroy
+  has_many :products, through: :line_items
+  accepts_nested_attributes_for :line_items
   belongs_to :user
 
   def add_line_items_from_cart(cart)
@@ -12,5 +14,13 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  def order_total_price
+    total = 0
+    line_items.each do |i|
+      total += i.total_price
+    end
+    total
   end
 end
