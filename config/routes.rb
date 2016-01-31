@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'store/index'
 
   resources :products, only: [:show]
-  resources :categories, only: [:show, :index]
+  resources :categories, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
