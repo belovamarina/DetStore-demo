@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:new, :create, :update, :edit]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, except: [:new, :create]
+
 
   # GET /orders
   # GET /orders.json
@@ -81,6 +81,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :phone, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :phone, :address, :email, :pay_type, :user_id)
     end
 end
