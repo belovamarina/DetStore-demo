@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :admins, :skip => :registrations
-  resources :galleries
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  #resources :galleries
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
 
-  resources :orders
-  resources :line_items
-  resources :carts
+  resources :orders, only: [:new, :create]
+  resources :line_items, only: [:create, :update, :destroy]
+  resources :carts, only: [:show, :destroy]
   get 'store/index'
 
-  resources :products
-  resources :categories
+  resources :products, only: [:show]
+  resources :categories, only: [:show, :index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

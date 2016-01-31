@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 
 gem 'paperclip', '~> 4.3'
