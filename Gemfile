@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#ruby '2.1.7'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
@@ -50,3 +51,7 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
