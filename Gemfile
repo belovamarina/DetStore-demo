@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-#ruby '2.1.7'
+ruby '2.1.7'
+
+gem 'puma'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
