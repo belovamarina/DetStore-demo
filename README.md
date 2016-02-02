@@ -1,4 +1,5 @@
 # DetStore-demo
+https://rocky-sands-75170.herokuapp.com/
 Demo online store 
 <ul>Using: 
 <li>Ruby on Rails 4</li>
