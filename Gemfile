@@ -7,6 +7,8 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 
 gem 'paperclip', '~> 4.3'
+gem 'aws-sdk'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
