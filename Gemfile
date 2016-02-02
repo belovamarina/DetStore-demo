@@ -7,7 +7,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 
 gem 'paperclip', '~> 4.3'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
